@@ -128,26 +128,30 @@ def create_app():
         # # db.session.commit()
         # 
         return jsonify({'message': 'Data removed successfully'}), 200
-
-
-
-    # MVP Classify users on whether they are Admin, procurement managers, or normal employees.
-
+    
     @app.route('/classify', methods=['GET'])
     @jwt_required()
     def classify_user():
         current_user = get_jwt_identity()
         user_role = current_user.get("role")
-
-        classification = "Unknown"
+        classification = None  
         if user_role == "Admin":
             classification = "Admin User"
         elif user_role == "Procurement Manager":
             classification = "Procurement Manager"
         elif user_role == "Normal Employee":
             classification = "Normal Employee"
-
+        else:
+            return jsonify({"message": "Unauthorized", "error": "Invalid user role"}), 403
+        
         return jsonify({"message": "Success", "classification": classification}), 200
+
+
+    
+
+
+
+    
     
  # MVP: Procurement Manager Reviews and Approves a Request
     
