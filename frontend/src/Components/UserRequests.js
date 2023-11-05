@@ -11,7 +11,7 @@ const UserRequests = () => {
       try {
         const response = await axios.get('http://127.0.0.1:5000/user_requests', {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+            Authorization: `Bearer ${localStorage.getItem(' eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY5OTE5MDcwMSwianRpIjoiN2QyNjdjOWUtMzk4OS00ZTg0LWJjYmQtMzBmOTNhMDkwZDUzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJ1c2VyX2lkIjoyNCwicm9sZSI6Ik5vcm1hbCBFbXBsb3llZSJ9LCJuYmYiOjE2OTkxOTA3MDEsImV4cCI6MTY5OTQ0OTkwMX0.hxvWknwdd2x1t0o2BxpxJjvTkDMJUC6a73TwcGIjK5Y ')}`,
           },
         });
         setActiveRequests(response.data.active_requests);
